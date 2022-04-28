@@ -1,17 +1,19 @@
-import "./utils/env";
-import { isGenericMessageEvent } from "./utils/helpers";
 import { App } from "@slack/bolt";
 
+import "./utils/env";
+import { SLACK_BOT_TOKEN, SLACK_SIGNING_SECRET } from "./utils/env";
+import { applyBambooMessage } from "./shortcut/message";
+import { applyBambooThread } from "./shortcut/thread";
+import { applyBambooCommon } from "./shortcut/common";
+
 const app = new App({
-  token: process.env.SLACK_BOT_TOKEN,
-  signingSecret: process.env.SLACK_SIGNING_SECRET,
+  token: SLACK_BOT_TOKEN,
+  signingSecret: SLACK_SIGNING_SECRET,
 });
 
-app.message("hello", async ({ message, say }) => {
-  if (!isGenericMessageEvent(message)) return;
-
-  await say(`Hey there <@${message.user}>!`);
-});
+applyBambooMessage(app);
+applyBambooThread(app);
+applyBambooCommon(app);
 
 (async () => {
   await app.start(process.env.PORT || 3000);
