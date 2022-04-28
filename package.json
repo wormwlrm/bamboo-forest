@@ -7,7 +7,7 @@
     "build": "tsc -p .",
     "build:watch": "tsc -w -p .",
     "start": "npm run build && node dist/app.js",
-    "release-it": "npm run release-it"
+    "release": "release-it"
   },
   "license": "MIT",
   "dependencies": {
