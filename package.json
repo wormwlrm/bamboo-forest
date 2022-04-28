@@ -4,10 +4,11 @@
   "description": "Bolt getting started app in TypeScript",
   "main": "dist/app.js",
   "scripts": {
-    "build": "tsc -p .",
-    "build:watch": "tsc -w -p .",
+    "build": "npm run tsc -- -p .",
+    "build:watch": "npm run tsc -- -w -p .",
     "start": "npm run build && node dist/app.js",
-    "release": "release-it"
+    "release": "release-it",
+    "tsc": "tsc"
   },
   "license": "MIT",
   "dependencies": {
