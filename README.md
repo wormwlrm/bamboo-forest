@@ -8,7 +8,7 @@
 
 ## 데모
 
-https://user-images.githubusercontent.com/26682772/165727010-b4c03977-8138-4108-bd60-f86841149526.mov
+<https://user-images.githubusercontent.com/26682772/165727010-b4c03977-8138-4108-bd60-f86841149526.mov>
 
 ## 지원 기능
 
