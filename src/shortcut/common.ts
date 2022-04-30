@@ -4,8 +4,6 @@ import {
   BlockAction,
   SlackActionMiddlewareArgs,
   SlackEventMiddlewareArgs,
-  SlackViewAction,
-  SlackViewMiddlewareArgs,
 } from "@slack/bolt";
 import { SLACK_BAMBOO_CHANNEL } from "../utils/env";
 
@@ -16,30 +14,20 @@ const responseJustAck = async ({
   try {
     await ack();
   } catch (error) {
-    console.log("error");
     logger.error(error);
   }
 };
 
 const sendWelcomeMessage = async ({
   say,
-  event,
 }: SlackEventMiddlewareArgs<"app_mention"> & AllMiddlewareArgs) => {
   await say({
     blocks: [
       {
-        type: "header",
-        text: {
-          type: "plain_text",
-          text: ":tanabata_tree: Bamboo Forest",
-          emoji: true,
-        },
-      },
-      {
         type: "section",
         text: {
           type: "mrkdwn",
-          text: `>>> *임금님 귀는 당나귀 귀!* \n\n안녕하세요 여러분! 대나무숲에 오신 걸 환영해요.`,
+          text: `>>> *임금님 귀는 당나귀 귀!* \n\n안녕하세요, 대나무숲에 대해 궁금한 점이 있으신가요?`,
         },
       },
       {
@@ -90,7 +78,6 @@ const sendHelpMessage = async ({
 }: SlackActionMiddlewareArgs<BlockAction> & AllMiddlewareArgs) => {
   await ack();
 
-  console.log(body.user.id);
   await client.chat.postEphemeral({
     channel: SLACK_BAMBOO_CHANNEL,
     user: body.user.id,
