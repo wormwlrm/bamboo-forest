@@ -1,0 +1,46 @@
+{
+  "display_information": {
+    "name": "Bamboo Forest 🎋",
+    "description": "여러분의 슬랙 워크스페이스에 구성원들의 메시지를 익명으로 전송할 수 있는 공간을 만들어보세요.",
+    "background_color": "#4e762d",
+    "long_description": "> 여러분의 슬랙 워크스페이스에 구성원들의 메시지를 익명으로 전송할 수 있는 공간을 만들어보세요.\r\n\r\n*이럴 때 사용해보세요*\r\n\r\n- 구성원의 솔직한 피드백이 필요할 때\r\n- 민감한 이슈에 대해 토론이 필요할 때\r\n- 구성원을 칭찬하고 싶을 때\r\n- 고민거리를 털어놓을 장소가 필요할 때\r\n- 조직에 대한 공익적 제보가 필요할 때\r\n\r\n*지원 기능*\r\n\r\n- 특정 채널에 익명으로 메시지를 남길 수 있어요.\r\n- 특정 메시지에 익명으로 스레드를 남길 수 있어요.\r\n- 익명 메시지에 닉네임을 설정할 수 있어요. 익명으로 생성되는 닉네임을 구경해보세요.\r\n- 앱을 멘션하면 웰컴 메시지를 받을 수 있어요.\r\n- 웰컴 메시지에서 앱 사용법과 기능 제안, 버그 제보 방법을 알려드려요."
+  },
+  "features": {
+    "bot_user": {
+      "display_name": "Bamboo Forest",
+      "always_online": false
+    },
+    "shortcuts": [
+      {
+        "name": "새 메시지 남기기",
+        "type": "global",
+        "callback_id": "bamboo_message",
+        "description": "현재 채널에 새 메시지를 남깁니다."
+      },
+      {
+        "name": "스레드에 댓글 달기",
+        "type": "message",
+        "callback_id": "bamboo_thread",
+        "description": "현재 메시지에 댓글을 답니다."
+      }
+    ]
+  },
+  "oauth_config": {
+    "scopes": {
+      "bot": ["channels:history", "chat:write", "commands", "app_mentions:read"]
+    }
+  },
+  "settings": {
+    "event_subscriptions": {
+      "request_url": "https://<replace_this>.herokuapp.com/slack/events",
+      "bot_events": ["app_mention", "message.channels"]
+    },
+    "interactivity": {
+      "is_enabled": true,
+      "request_url": "https://<replace_this>.herokuapp.com/slack/events"
+    },
+    "org_deploy_enabled": false,
+    "socket_mode_enabled": false,
+    "token_rotation_enabled": false
+  }
+}
