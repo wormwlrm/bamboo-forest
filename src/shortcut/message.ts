@@ -7,8 +7,7 @@ import {
   SlackViewMiddlewareArgs,
   ViewSubmitAction,
 } from "@slack/bolt";
-import { SLACK_BAMBOO_CHANNEL } from "../utils/env";
-import { formattedMessage } from "../utils/format";
+import { sendMessage } from "../utils/chat";
 import { getRandomName } from "../utils/names";
 
 const IDENTIFIER = "bamboo_message";
@@ -97,7 +96,7 @@ const openMessageModal = async ({
                     type: "mrkdwn",
                     text: ":warning: *한 번 전송한 메시지는 수정이 불가능함을 확인했어요.*",
                   },
-                  value: "checked",
+                  value: "checked", // 의미 없는 값
                 },
               ],
               action_id: `#checked`,
@@ -123,6 +122,7 @@ const responseModal = async ({
 
     const name = values["#name"]["#message"].value ?? getRandomName();
     const message = values[`#content`][`#message`].value ?? "";
+
     const checked =
       (values[`#confirm`][`#checked`]["selected_options"]?.length ?? 0) > 0;
 
@@ -137,10 +137,10 @@ const responseModal = async ({
     }
 
     await ack();
-
-    await client.chat.postMessage({
-      text: formattedMessage({ name, message }),
-      channel: SLACK_BAMBOO_CHANNEL,
+    await sendMessage({
+      client,
+      name,
+      message,
     });
   } catch (error) {
     logger.error(error);
