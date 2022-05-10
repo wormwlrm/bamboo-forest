@@ -8,8 +8,9 @@ export const BAMBOO_MESSAGE_CONTENT_BLOCK_ID = "#bamboo_message_content";
 
 export const getOriginalMessageFromBlocks = (blocks: SectionBlock[] = []) => {
   return (
-    blocks.find((b: SectionBlock) => b.block_id === "#bamboo_message_content")
-      ?.text?.text ?? ""
+    blocks.find(
+      (b: SectionBlock) => b.block_id === BAMBOO_MESSAGE_CONTENT_BLOCK_ID
+    )?.text?.text ?? ""
   );
 };
 
