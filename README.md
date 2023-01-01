@@ -28,7 +28,7 @@
 
 ## 설치 방법
 
-> - 본 앱은 슬랙의 인증을 받은 배포 버전 앱이 아닙니다. 워크스페이스에서 사용하기 위해서는 본 소스코드를 이용해 별도 서버를 구축해야 합니다. 개인 서버 구축이 어렵다면 [Heroku](https://www.heroku.com/)를 이용하세요.
+> [Heroku](https://www.heroku.com/) 등의 서비스로 인스턴스를 띄우는 코드는 더 이상 사용하지 않으며 [별도 브랜치에 아카이브](https://github.com/wormwlrm/bamboo-forest/tree/instance)합니다. 버전 `2.x.x` 부터는 [AWS Lambda](https://github.com/wormwlrm/bamboo-forest/) 를 호스팅 플랫폼으로 사용합니다.
 
 1. 본 리포지터리를 클론하고 디펜던시를 설치합니다.
 
