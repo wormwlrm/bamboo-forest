@@ -1,0 +1,20 @@
+service: serverless-bolt-js
+frameworkVersion: "3"
+provider:
+  name: aws
+  runtime: nodejs14.x
+  environment:
+    SLACK_SIGNING_SECRET: ${env:SLACK_SIGNING_SECRET}
+    SLACK_BOT_TOKEN: ${env:SLACK_BOT_TOKEN}
+    SLACK_BAMBOO_CHANNEL: ${env:SLACK_BAMBOO_CHANNEL}
+  deploymentMethod: direct
+functions:
+  slack:
+    handler: dist/app.handler
+    events:
+      - http:
+          path: slack/events
+          method: post
+plugins:
+  - serverless-offline
+useDotenv: true
