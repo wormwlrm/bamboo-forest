@@ -59,14 +59,17 @@
     SLACK_BAMBOO_CHANNEL=
     ```
 
-1. 터미널 두 개를 이용해 앱을 실행합니다.
+1. 터미널 여러 개를 이용해 앱을 실행합니다.
 
     ```sh
     # 타입스크립트 컴파일
     $ yarn build:watch
 
-    # 빌드된 앱 실행
-    $ yarn start
+    # 서버리스 로컬에서 실행
+    $ serverless offline --noPrependStageInUrl
+
+    # ngrok으로 터널링
+    $ ngrok http 3000
     ```
 
 1. `Event Subscription`과 `Interactivity & Shortcuts` 의 Request URL을 로컬 개발 환경으로 터널링하는 과정이 필요합니다. 이를 위해 별도의 터미널에서 [ngrok](https://ngrok.com/)를 이용합니다. ngrok에서 출력하는 URL에 `/slack/events`를 덧붙여 Request URL에 입력합니다.
