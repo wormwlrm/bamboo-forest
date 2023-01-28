@@ -16,3 +16,7 @@ plugins:
   - serverless-offline
   - serverless-dotenv-plugin
 useDotenv: true
+custom:
+  dotenv:
+    exclude:
+      - GITHUB_TOKEN
