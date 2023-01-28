@@ -1,8 +1,14 @@
 {
+  "git": {
+    "commit": true,
+    "tag": true,
+    "push": true
+  },
   "npm": {
     "publish": false
   },
   "github": {
-    "publish": true
+    "release": true,
+    "autoGenerate": true
   }
 }
