@@ -1,7 +1,12 @@
 {
-  "name": "getting-started-typescript",
+  "name": "bamboo-forest",
   "version": "2.0.0",
-  "description": "Bolt getting started app in TypeScript",
+  "description": "🎋 대나무숲 슬랙 앱 - Echo your message as anonymous on Slack!",
+  "author": {
+    "name": "Jongyoon Jeong",
+    "email": "wormwlrm13@gmail.com",
+    "url": "https://wormwlrm.github.io"
+  },
   "main": "dist/app.js",
   "scripts": {
     "build": "npm run tsc -- -p .",
