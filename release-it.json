@@ -1,8 +1,0 @@
-{
-  "npm": {
-    "publish": false
-  },
-  "github": {
-    "publish": true
-  }
-}
