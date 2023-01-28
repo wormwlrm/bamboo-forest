@@ -8,7 +8,9 @@
     "build:watch": "npm run tsc -- -w -p .",
     "start": "npm run build && node dist/app.js",
     "release": "release-it",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "deploy:dev": "NODE_ENV=development sls deploy --verbose",
+    "deploy:production": "NODE_ENV=production sls deploy --stage production --verbose"
   },
   "license": "MIT",
   "dependencies": {
@@ -18,6 +20,7 @@
   "devDependencies": {
     "@types/node": "^14.14.35",
     "release-it": "^14.14.2",
+    "serverless-dotenv-plugin": "^4.0.2",
     "serverless-offline": "^12.0.3",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.3"
