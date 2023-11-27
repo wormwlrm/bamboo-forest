@@ -11,7 +11,7 @@
   "scripts": {
     "build": "npm run tsc -- -p .",
     "build:watch": "npm run tsc -- -w -p .",
-    "start": "npm run build && node dist/app.js",
+    "start": "serverless offline --noPrependStageInUrl",
     "release": "dotenv release-it",
     "tsc": "tsc",
     "deploy:dev": "NODE_ENV=development sls deploy --verbose",
