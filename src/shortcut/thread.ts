@@ -3,9 +3,8 @@ import {
   App,
   BlockAction,
   BlockElementAction,
-  MessageShortcut,
   SlackActionMiddlewareArgs,
-  SlackShortcutMiddlewareArgs,
+  SlackCommandMiddlewareArgs,
   SlackViewAction,
   SlackViewMiddlewareArgs,
   ViewSubmitAction,
@@ -132,7 +131,7 @@ const openThreadModal = async ({
   client,
   logger,
 }:
-  | (SlackShortcutMiddlewareArgs<MessageShortcut> & AllMiddlewareArgs)
+  | (SlackCommandMiddlewareArgs & AllMiddlewareArgs)
   | (SlackActionMiddlewareArgs<BlockAction<BlockElementAction>> &
       AllMiddlewareArgs)) => {
   try {
@@ -196,7 +195,7 @@ const responseModal = async ({
 };
 
 export const applyBambooThread = (app: App) => {
-  app.shortcut<MessageShortcut>(IDENTIFIER, openThreadModal);
+  app.command(IDENTIFIER, openThreadModal);
   app.view<ViewSubmitAction>(IDENTIFIER, responseModal);
   app.action<BlockAction<BlockElementAction>>(
     "#make_thread_button_clicked",

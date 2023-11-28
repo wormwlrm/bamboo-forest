@@ -1,8 +1,7 @@
 import {
   AllMiddlewareArgs,
   App,
-  GlobalShortcut,
-  SlackShortcutMiddlewareArgs,
+  SlackCommandMiddlewareArgs,
   SlackViewAction,
   SlackViewMiddlewareArgs,
   ViewSubmitAction,
@@ -10,19 +9,19 @@ import {
 import { sendMessage } from "../utils/chat";
 import { getRandomName } from "../utils/names";
 
-const IDENTIFIER = "bamboo_message";
+const IDENTIFIER = "/대나무숲";
 
 const openMessageModal = async ({
-  shortcut,
+  command,
   ack,
   client,
   logger,
-}: SlackShortcutMiddlewareArgs<GlobalShortcut> & AllMiddlewareArgs) => {
+}: SlackCommandMiddlewareArgs & AllMiddlewareArgs) => {
   try {
     await ack();
 
     const result = await client.views.open({
-      trigger_id: shortcut.trigger_id,
+      trigger_id: command.trigger_id,
       view: {
         type: "modal",
         callback_id: IDENTIFIER,
@@ -148,6 +147,6 @@ const responseModal = async ({
 };
 
 export const applyBambooMessage = (app: App) => {
-  app.shortcut<GlobalShortcut>(IDENTIFIER, openMessageModal);
+  app.command(IDENTIFIER, openMessageModal);
   app.view<ViewSubmitAction>(IDENTIFIER, responseModal);
 };
