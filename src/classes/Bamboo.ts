@@ -1,9 +1,9 @@
 import { App, AwsLambdaReceiver } from "@slack/bolt";
 import { SLACK_BOT_TOKEN } from "../utils/env";
 
-import { applyBambooMessage } from "../shortcut/message";
-import { applyBambooThread } from "../shortcut/thread";
-import { applyBambooCommon } from "../shortcut/common";
+import { applyBambooMessage } from "../commands/message";
+import { applyBambooThread } from "../commands/thread";
+import { applyBambooCommon } from "../commands/common";
 
 export class Bamboo {
   private app: App;
