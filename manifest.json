@@ -10,18 +10,12 @@
       "display_name": "Bamboo Forest",
       "always_online": false
     },
-    "shortcuts": [
+    "slash_commands": [
       {
-        "name": "새 메시지 남기기",
-        "type": "global",
-        "callback_id": "bamboo_message",
-        "description": "현재 채널에 새 메시지를 남깁니다."
-      },
-      {
-        "name": "스레드에 댓글 달기",
-        "type": "message",
-        "callback_id": "bamboo_thread",
-        "description": "현재 메시지에 댓글을 답니다."
+        "command": "/대나무숲",
+        "url": "https://{replace_this}/slack/events",
+        "description": "새 익명 메시지 보내기",
+        "should_escape": true
       }
     ]
   },
@@ -32,12 +26,12 @@
   },
   "settings": {
     "event_subscriptions": {
-      "request_url": "https://<replace_this>.herokuapp.com/slack/events",
+      "request_url": "https://{replace_this}/slack/events",
       "bot_events": ["app_mention", "message.channels"]
     },
     "interactivity": {
       "is_enabled": true,
-      "request_url": "https://<replace_this>.herokuapp.com/slack/events"
+      "request_url": "https://{replace_this}/slack/events"
     },
     "org_deploy_enabled": false,
     "socket_mode_enabled": false,
